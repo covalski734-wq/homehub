@@ -1,0 +1,50 @@
+{
+  "categories": {
+    "salary": "Зарплата",
+    "freelance": "Підробіток",
+    "gifts-income": "Подарунки",
+    "interest": "Відсотки й кешбек",
+    "other-income": "Інші доходи",
+    "groceries": "Продукти",
+    "cafe": "Кафе й ресторани",
+    "housing": "Житло й комуналка",
+    "transport": "Транспорт",
+    "health": "Здоров'я",
+    "shopping": "Покупки",
+    "entertainment": "Розваги",
+    "subscriptions": "Підписки та зв'язок",
+    "education": "Освіта",
+    "travel": "Подорожі",
+    "other-expense": "Інші витрати",
+    "savings-in": "Поповнення заощаджень",
+    "savings-out": "Зняття із заощаджень",
+    "account-in": "Поповнення рахунку",
+    "adjustment-in": "Коригування залишку (+)",
+    "adjustment-out": "Коригування залишку (−)"
+  },
+  "noCategory": "Без категорії",
+  "operations": {
+    "FUND_DEPOSIT": "Поповнення «{{fund}}»",
+    "FUND_WITHDRAWAL": "Зняття з «{{fund}}»",
+    "FUND_AUTO_DEPOSIT": "Автопоповнення «{{fund}}»",
+    "FUND_AUTO_WITHDRAWAL": "Автозняття «{{fund}}»",
+    "FUND_RETURN": "Повернення в «{{fund}}»",
+    "FUND_PART_MOVED": "Перенесення «{{part}}» на інший рахунок",
+    "ACCOUNT_TOPUP": "Поповнення рахунку",
+    "RECONCILIATION": "Звірка залишку"
+  },
+  "movements": {
+    "autoDeposit": "Автопоповнення",
+    "autoWithdrawal": "Автозняття"
+  },
+  "jointOwner": "Спільні",
+  "notices": {
+    "MISSING_RATE": "Немає курсу {{currency}} для «{{fund}} · {{part}}»",
+    "REQUIRED_OVER_INCOME": "Обов'язкові платежі та покупки більші за дохід на {{amount}} {{currency}}",
+    "PLAN_OVER_MONEY": "План заощаджень більший за доступні гроші на {{amount}} {{currency}}",
+    "PLAN_OVER_MONEY_REDUCE": "План заощаджень більший за доступні гроші на {{amount}} {{currency}}: зменште поповнення {{parts}}",
+    "PART_BELOW_MINIMUM": "На «{{fund}} · {{part}}» бракує до мінімуму",
+    "MONTH_PLAN_OVER_INCOME": "План місяця більший за дохід на {{amount}} {{currency}}",
+    "ACCOUNT_OVER_RESERVED": "На рахунку «{{account}}» у фондах відкладено більше, ніж є: бракує {{amount}} {{currency}}"
+  }
+}

@@ -1,0 +1,28 @@
+import { ChevronDown } from 'lucide-react';
+import type { ComponentProps } from 'react';
+import { cn } from '@/lib/utils';
+import { fieldClassName } from './input';
+
+/** Native <select>: the best picker on iPhone and fully accessible out of the box. */
+export function NativeSelect({
+  className,
+  selectClassName,
+  children,
+  ...props
+}: ComponentProps<'select'> & { selectClassName?: string }) {
+  return (
+    <div className={cn('relative w-full', className)}>
+      <select
+        data-slot="native-select"
+        className={cn(fieldClassName, 'appearance-none pr-9', selectClassName)}
+        {...props}
+      >
+        {children}
+      </select>
+      <ChevronDown
+        aria-hidden
+        className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground"
+      />
+    </div>
+  );
+}

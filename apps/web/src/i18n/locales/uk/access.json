@@ -1,0 +1,73 @@
+{
+  "areas": {
+    "finance": "Фінанси",
+    "planner": "Планувальник",
+    "savings": "Заощадження",
+    "household": "Дім"
+  },
+  "levels": {
+    "read": "читання",
+    "write": "зміна",
+    "readWrite": "читання і зміна"
+  },
+  "scopeGrid": {
+    "area": "Розділ",
+    "summary": "{{area}}: {{access}}"
+  },
+  "mcp": {
+    "title": "Підключення ChatGPT і Claude",
+    "description": "Асистент працює з даними HomeHub через MCP — лише в розділах, які ви дозволите",
+    "address": "Адреса MCP-сервера",
+    "oauth": "ChatGPT і claude.ai підключаються через OAuth: додайте цю адресу як конектор, а дозвіл ви підтвердите тут, у HomeHub.",
+    "token": "Інші клієнти (Claude Code, Cursor, MCP Inspector) використовують особистий токен у заголовку:"
+  },
+  "copy": {
+    "button": "Копіювати",
+    "done": "Скопійовано",
+    "failed": "Не вдалося скопіювати — виділіть текст і скопіюйте вручну"
+  },
+  "list": {
+    "title": "Підключення",
+    "description": "Особисті токени й застосунки, підключені до простору",
+    "empty": "Підключень поки немає",
+    "personal": "Особистий токен",
+    "app": "Застосунок",
+    "notOwn": "Підключив інший учасник",
+    "created": "Створено {{date}}",
+    "lastUsed": "Використано {{date}}",
+    "neverUsed": "Ще не використовувалося",
+    "expires": "Діє до {{date}}",
+    "noExpiry": "Безстроково",
+    "revoke": "Відкликати",
+    "revokeTitle": "Відкликати підключення?",
+    "revokeDescription": "«{{name}}» одразу втратить доступ до HomeHub. Це не можна скасувати.",
+    "revoked": "Підключення відкликано"
+  },
+  "create": {
+    "title": "Новий особистий токен",
+    "description": "Для клієнтів MCP, які приймають токен: Claude Code, Cursor, MCP Inspector",
+    "name": "Назва",
+    "namePlaceholder": "Наприклад, Claude Code на ноутбуці",
+    "scopes": "Права",
+    "expiry": "Термін дії",
+    "days_one": "{{count}} день",
+    "days_few": "{{count}} дні",
+    "days_many": "{{count}} днів",
+    "days_other": "{{count}} дня",
+    "noExpiry": "Без терміну",
+    "submit": "Створити токен",
+    "secretTitle": "Токен «{{name}}» створено",
+    "secretWarning": "Скопіюйте його зараз: HomeHub зберігає лише відбиток токена і більше його не покаже.",
+    "done": "Готово"
+  },
+  "consent": {
+    "title": "{{client}} ({{host}}) просить доступ до HomeHub",
+    "description": "Позначте, що застосунку можна робити. Відкликати доступ можна в налаштуваннях, розділ «Доступ для ШІ».",
+    "signedInAs": "Ви увійшли як {{email}}, простір «{{workspace}}»",
+    "expires": "Запит діє до {{time}}",
+    "approve": "Дозволити",
+    "deny": "Відхилити",
+    "failed": "Не вдалося відкрити запит",
+    "toHome": "На головну"
+  }
+}

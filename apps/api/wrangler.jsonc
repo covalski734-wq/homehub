@@ -1,0 +1,32 @@
+{
+  "name": "homehub",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "../web/dist",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/.well-known/oauth-*"],
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "homehub",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations",
+    },
+  ],
+  "vars": {
+    "ENVIRONMENT": "production",
+    "WEB_ORIGIN": "https://homehub.example.com",
+    "SESSION_TTL_DAYS": "30",
+    "WORKSPACE_NAME": "Наш дом",
+  },
+  "triggers": {
+    "crons": ["17 3 * * *", "20 11,15 * * 1-5"],
+  },
+  "observability": {
+    "enabled": true,
+  },
+}

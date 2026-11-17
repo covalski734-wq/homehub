@@ -1,0 +1,158 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.985 0.002 247);
+  --foreground: oklch(0.2 0.01 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.01 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.01 260);
+  --primary: oklch(0.24 0.012 260);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.96 0.004 260);
+  --secondary-foreground: oklch(0.24 0.012 260);
+  --muted: oklch(0.96 0.004 260);
+  --muted-foreground: oklch(0.52 0.014 260);
+  --accent: oklch(0.955 0.006 260);
+  --accent-foreground: oklch(0.24 0.012 260);
+  --destructive: oklch(0.577 0.215 27.3);
+  --border: oklch(0.915 0.006 260);
+  --input: oklch(0.89 0.006 260);
+  --ring: oklch(0.55 0.15 262);
+  --income: oklch(0.56 0.14 155);
+  --expense: oklch(0.6 0.19 25);
+  --transfer: oklch(0.55 0.12 262);
+  --chart-income: #2563eb;
+  --chart-expense: #ea580c;
+  --chart-savings: #0d9488;
+  --cat-1: #2a78d6;
+  --cat-2: #eb6834;
+  --cat-3: #1baf7a;
+  --cat-4: #eda100;
+  --cat-5: #e87ba4;
+  --cat-6: #008300;
+  --cat-7: #4a3aa7;
+  --cat-8: #e34948;
+  --cat-other: #8a8f98;
+  --sidebar: oklch(0.975 0.003 260);
+}
+
+.dark {
+  --background: oklch(0.16 0.006 260);
+  --foreground: oklch(0.96 0.003 260);
+  --card: oklch(0.2 0.008 260);
+  --card-foreground: oklch(0.96 0.003 260);
+  --popover: oklch(0.21 0.008 260);
+  --popover-foreground: oklch(0.96 0.003 260);
+  --primary: oklch(0.94 0.004 260);
+  --primary-foreground: oklch(0.2 0.01 260);
+  --secondary: oklch(0.26 0.008 260);
+  --secondary-foreground: oklch(0.96 0.003 260);
+  --muted: oklch(0.25 0.008 260);
+  --muted-foreground: oklch(0.7 0.012 260);
+  --accent: oklch(0.27 0.01 260);
+  --accent-foreground: oklch(0.96 0.003 260);
+  --destructive: oklch(0.66 0.19 24);
+  --border: oklch(0.29 0.008 260);
+  --input: oklch(0.33 0.01 260);
+  --ring: oklch(0.65 0.15 262);
+  --income: oklch(0.74 0.15 155);
+  --expense: oklch(0.72 0.16 28);
+  --transfer: oklch(0.72 0.11 262);
+  --chart-income: #3b82f6;
+  --chart-expense: #ea580c;
+  --chart-savings: #0d9488;
+  --cat-1: #3987e5;
+  --cat-2: #d95926;
+  --cat-3: #199e70;
+  --cat-4: #c98500;
+  --cat-5: #d55181;
+  --cat-6: #008300;
+  --cat-7: #9085e9;
+  --cat-8: #e66767;
+  --cat-other: #6b7280;
+  --sidebar: oklch(0.18 0.007 260);
+}
+
+@theme inline {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-income: var(--income);
+  --color-expense: var(--expense);
+  --color-transfer: var(--transfer);
+  --color-chart-income: var(--chart-income);
+  --color-chart-expense: var(--chart-expense);
+  --color-chart-savings: var(--chart-savings);
+  --color-sidebar: var(--sidebar);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* The page header is sticky: scrolled-to and focused elements stay below it. */
+    scroll-padding-top: 9rem;
+  }
+  @media (min-width: 40rem) {
+    html {
+      scroll-padding-top: 6rem;
+    }
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/*
+ * Status tones: a soft tint behind status selects and badges. The label text is always there, so
+ * the colour only helps scanning; Settings → «Цветные статусы» turns it off (data-colors="off").
+ */
+:root:not([data-colors='off']) .tone-green {
+  @apply bg-emerald-50 text-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300;
+}
+:root:not([data-colors='off']) .tone-amber {
+  @apply bg-amber-50 text-amber-800 dark:bg-amber-950/50 dark:text-amber-300;
+}
+:root:not([data-colors='off']) .tone-red {
+  @apply bg-red-50 text-red-800 dark:bg-red-950/50 dark:text-red-300;
+}
+:root:not([data-colors='off']) .tone-blue {
+  @apply bg-sky-50 text-sky-800 dark:bg-sky-950/50 dark:text-sky-300;
+}
+:root:not([data-colors='off']) .tone-violet {
+  @apply bg-violet-50 text-violet-800 dark:bg-violet-950/50 dark:text-violet-300;
+}
+:root:not([data-colors='off']) .tone-gray {
+  @apply bg-muted text-muted-foreground;
+}

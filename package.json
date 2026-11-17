@@ -1,0 +1,46 @@
+{
+  "name": "homehub",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.3.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "setup": "pnpm install && pnpm build:shared && pnpm db:migrate:local",
+    "build:shared": "pnpm --filter @homehub/shared build",
+    "dev": "pnpm build:shared && pnpm --parallel --filter @homehub/shared --filter @homehub/api --filter @homehub/web dev",
+    "dev:worker": "pnpm --filter @homehub/api dev",
+    "dev:web": "pnpm --filter @homehub/web dev",
+    "preview": "pnpm build && pnpm --filter @homehub/api preview",
+    "build": "pnpm build:shared && pnpm --filter @homehub/web build && pnpm --filter @homehub/api build",
+    "release:check": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test && pnpm run db:check && pnpm privacy:check",
+    "release:migrate": "pnpm --filter @homehub/api run db:pending:remote && pnpm --filter @homehub/api run db:bookmark:remote && pnpm --filter @homehub/api run db:migrate:remote",
+    "release:deploy": "pnpm run build && pnpm --filter @homehub/api run worker:deploy",
+    "deploy": "pnpm run release:check && pnpm run release:migrate && pnpm run release:deploy",
+    "db:generate": "pnpm --filter @homehub/api db:generate",
+    "db:check": "pnpm --filter @homehub/api run db:check",
+    "db:migrate:local": "pnpm --filter @homehub/api db:migrate:local",
+    "db:migrate:remote": "pnpm --filter @homehub/api db:migrate:remote",
+    "typecheck": "pnpm build:shared && pnpm -r typecheck",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "node scripts/format-check.mjs --write",
+    "format:check": "node scripts/format-check.mjs",
+    "test": "pnpm build:shared && pnpm -r --workspace-concurrency=1 test",
+    "test:e2e": "pnpm --filter @homehub/web test:e2e",
+    "auth:setup": "node scripts/setup-auth.mjs",
+    "privacy:check": "node scripts/privacy-check.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "eslint": "^9.39.0",
+    "eslint-config-prettier": "^10.1.0",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.0"
+  }
+}

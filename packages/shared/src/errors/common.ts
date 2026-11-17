@@ -1,0 +1,31 @@
+/** Errors of any module: HTTP, validation, database constraints. */
+export const COMMON_ERRORS = {
+  // generic
+  BAD_REQUEST: 'Некорректный запрос',
+  VALIDATION_FAILED: 'Проверьте введенные данные',
+  UNAUTHENTICATED: 'Требуется вход',
+  SESSION_EXPIRED: 'Сессия истекла, войдите снова',
+  ACCESS_REVOKED: 'Доступ закрыт',
+  FORBIDDEN: 'Недостаточно прав',
+  CSRF_FAILED: 'Запрос отклонен: обновите страницу и повторите',
+  NOT_FOUND: 'Не найдено',
+  CONFLICT: 'Данные изменились. Обновите страницу и повторите',
+  VERSION_CONFLICT: 'Запись уже изменили. Обновите данные и повторите',
+  INTERNAL: 'Внутренняя ошибка сервера',
+  SERVICE_UNAVAILABLE: 'Сервис временно недоступен',
+  DEMO_READ_ONLY: 'В демо-режиме изменения недоступны',
+  IDEMPOTENCY_KEY_REUSED: 'Этот ключ повтора уже использован для другого запроса',
+  IDEMPOTENCY_IN_PROGRESS: 'Такой же запрос еще выполняется',
+  // database constraints and triggers
+  DB_CURRENCY_MISMATCH: 'Валюта счета изменилась. Обновите данные и повторите.',
+  DB_ACCOUNT_HAS_TRANSACTIONS: 'Нельзя сменить валюту счета, по которому есть операции',
+  DB_CATEGORY_KIND: 'Категория не соответствует типу операции',
+  DB_TRANSFER_AMOUNT: 'Сумма зачисления должна совпадать с суммой списания',
+  DB_BUDGET_CATEGORY_KIND: 'Лимит задается только для категорий расходов',
+  DB_WORKSPACE_IMMUTABLE: 'Запись принадлежит другому пространству',
+  DB_WORKSPACE_MISMATCH: 'Связанная запись не найдена',
+  DB_APPEND_ONLY: 'Журнал и корректировки нельзя изменять',
+  DB_DUPLICATE: 'Такая запись уже существует',
+  DB_IN_USE: 'Запись используется в других данных',
+  DB_CONSTRAINT: 'Данные нарушают ограничения',
+} as const;

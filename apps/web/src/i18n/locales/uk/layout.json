@@ -1,0 +1,78 @@
+{
+  "shell": {
+    "mainNav": "Основна навігація",
+    "skipToContent": "Перейти до вмісту",
+    "demoBanner": "Деморежим · реальні дані приховано, приклади не можна змінювати",
+    "hideMenu": "Згорнути меню",
+    "showMenu": "Розгорнути меню"
+  },
+  "alertDialog": {
+    "pending": "Зачекайте…"
+  },
+  "dialog": {
+    "close": "Закрити"
+  },
+  "formDialog": {
+    "discardTitle": "Закрити без збереження?",
+    "discardDescription": "Внесені зміни буде втрачено.",
+    "discardConfirm": "Не зберігати"
+  },
+  "states": {
+    "loadError": "Не вдалося завантажити дані",
+    "retry": "Повторити"
+  },
+  "app": {
+    "pageLoading": "Завантаження сторінки",
+    "notFound": "Сторінку не знайдено",
+    "toHome": "На головну"
+  },
+  "more": {
+    "title": "Ще",
+    "description": "Усі розділи та налаштування",
+    "navLabel": "Додаткові розділи"
+  },
+  "api": {
+    "requestError": "Помилка запиту",
+    "noConnection": "Немає зв'язку з сервером",
+    "modeChanged": "Режим змінено в іншій вкладці. Оновіть сторінку.",
+    "somethingWrong": "Щось пішло не так"
+  },
+  "monthSwitcher": {
+    "months": {
+      "jan": "січ",
+      "feb": "лют",
+      "mar": "бер",
+      "apr": "кві",
+      "may": "тра",
+      "jun": "чер",
+      "jul": "лип",
+      "aug": "сер",
+      "sep": "вер",
+      "oct": "жов",
+      "nov": "лис",
+      "dec": "гру"
+    },
+    "label": "Вибір місяця",
+    "previousMonth": "Попередній місяць",
+    "pick": "Вибрати місяць і рік, зараз {{month}}",
+    "previousYear": "Попередній рік",
+    "nextYear": "Наступний рік",
+    "monthsOfYear": "Місяці {{year}} року",
+    "currentMonth": "Поточний місяць",
+    "nextMonth": "Наступний місяць"
+  },
+  "nav": {
+    "planning": "Планування",
+    "overview": "Огляд",
+    "recurring": "Регулярні витрати",
+    "purchases": "Покупки",
+    "loans": "Кредити",
+    "scenarios": "Сценарії",
+    "home": "Дім",
+    "shopping": "До магазину",
+    "chores": "Справи по дому",
+    "more": "Ще",
+    "shoppingShort": "Магазин",
+    "choresShort": "Справи"
+  }
+}

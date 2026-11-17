@@ -1,0 +1,10 @@
+dist
+coverage
+pnpm-lock.yaml
+playwright-report
+test-results
+.wrangler
+apps/api/migrations
+tools/pg-to-d1/legacy-postgres
+tools/pg-to-d1/out
+tools/excel-import/fixtures/*.xlsx

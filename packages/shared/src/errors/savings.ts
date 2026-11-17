@@ -1,0 +1,37 @@
+/** Funds, parts, movements, automatic operations, portfolios; members. */
+export const SAVINGS_ERRORS = {
+  SAVINGS_POT_NOT_FOUND: 'Копилка не найдена',
+  SAVINGS_POT_ARCHIVED: 'Копилка в архиве',
+  SAVINGS_NOT_A_FUND: 'Это портфель, а не фонд',
+  SAVINGS_NOT_A_PORTFOLIO: 'Это фонд, а не портфель',
+  SAVINGS_PART_NOT_FOUND: 'Подсчет не найден',
+  SAVINGS_PART_ARCHIVED: 'Подсчет в архиве',
+  SAVINGS_PART_NOT_FOUND_OR_ARCHIVED: 'Подсчет не найден или в архиве',
+  SAVINGS_CHOOSE_PART: 'Выберите подсчет',
+  SAVINGS_PART_HAS_HISTORY: 'У подсчета есть история — отправьте его в архив',
+  SAVINGS_PART_CURRENCY_LOCKED:
+    'Валюту подсчета с историей изменить нельзя — добавьте новый подсчет',
+  SAVINGS_POT_CURRENCY_LOCKED: 'Валюту фонда с операциями или привязанными счетами изменить нельзя',
+  SAVINGS_PART_NOT_ENOUGH: 'В подсчете «{{name}}» только {{amount}} {{currency}}',
+  SAVINGS_PART_WITHOUT_ACCOUNT:
+    'Подсчет не привязан к счету: укажите его счет, чтобы перевести деньги',
+  SAVINGS_ACCOUNT_NOT_FOUND: 'Счет не найден',
+  SAVINGS_ACCOUNT_ARCHIVED: 'Счет в архиве',
+  SAVINGS_ACCOUNT_CURRENCY:
+    'Счет в {{accountCurrency}}, а фонд в {{currency}}: выберите счет в {{currency}}',
+  SAVINGS_SOURCE_ACCOUNT_UNAVAILABLE: 'Счет списания не найден или в архиве',
+  SAVINGS_SOURCE_ACCOUNT_CURRENCY: 'Счет списания в {{accountCurrency}}, а подсчет в {{currency}}',
+  SAVINGS_MOVEMENT_NOT_FOUND: 'Операция не найдена',
+  SAVINGS_NO_RETURN: 'У этого снятия нет возврата в планировщике',
+  SAVINGS_RETURN_CLOSED: 'Возврат уже выполнен или удален в планировщике',
+  SAVINGS_AUTO_NOT_FOUND: 'Автоматическая операция не найдена',
+  SAVINGS_POSITION_NOT_FOUND: 'Позиция не найдена',
+  SAVINGS_QUANTITY_POSITIVE: 'Количество должно быть больше нуля',
+  SAVINGS_PRICE_UNAVAILABLE: 'Курс сейчас недоступен — укажите количество',
+  SAVINGS_RATE_MISSING: 'Нет курса {{currency}} — укажите количество',
+  SAVINGS_SEARCH_UNAVAILABLE: 'Поиск CoinGecko временно недоступен, попробуйте позже',
+  SAVINGS_PRICES_NOT_REFRESHED: 'Курс не обновлен: {{reason}}',
+  SAVINGS_PRICES_TOO_SOON: 'Курс обновлялся только что, попробуйте через несколько минут',
+  SAVINGS_FUND_OPERATION: 'Эта операция создана фондом «{{name}}»: измените или удалите ее в фонде',
+  MEMBER_NOT_FOUND: 'Участник не найден',
+} as const;

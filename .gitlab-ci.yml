@@ -1,0 +1,9 @@
+image: node:24-bookworm
+stages: [check]
+validate:
+  stage: check
+  script:
+    - npm install -g pnpm@11.3.0
+    - pnpm install --frozen-lockfile
+    - pnpm build
+    - pnpm release:check

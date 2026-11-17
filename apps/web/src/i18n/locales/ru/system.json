@@ -1,0 +1,50 @@
+{
+  "categories": {
+    "salary": "Зарплата",
+    "freelance": "Подработка",
+    "gifts-income": "Подарки",
+    "interest": "Проценты и кэшбэк",
+    "other-income": "Прочие доходы",
+    "groceries": "Продукты",
+    "cafe": "Кафе и рестораны",
+    "housing": "Жилье и ЖКХ",
+    "transport": "Транспорт",
+    "health": "Здоровье",
+    "shopping": "Покупки",
+    "entertainment": "Развлечения",
+    "subscriptions": "Подписки и связь",
+    "education": "Образование",
+    "travel": "Путешествия",
+    "other-expense": "Прочие расходы",
+    "savings-in": "Пополнение накоплений",
+    "savings-out": "Снятие из накоплений",
+    "account-in": "Пополнение счета",
+    "adjustment-in": "Корректировка остатка (+)",
+    "adjustment-out": "Корректировка остатка (−)"
+  },
+  "noCategory": "Без категории",
+  "operations": {
+    "FUND_DEPOSIT": "Пополнение «{{fund}}»",
+    "FUND_WITHDRAWAL": "Снятие из «{{fund}}»",
+    "FUND_AUTO_DEPOSIT": "Автопополнение «{{fund}}»",
+    "FUND_AUTO_WITHDRAWAL": "Автоснятие «{{fund}}»",
+    "FUND_RETURN": "Возврат в «{{fund}}»",
+    "FUND_PART_MOVED": "Перенос «{{part}}» на другой счет",
+    "ACCOUNT_TOPUP": "Пополнение счета",
+    "RECONCILIATION": "Сверка остатка"
+  },
+  "movements": {
+    "autoDeposit": "Автопополнение",
+    "autoWithdrawal": "Автоснятие"
+  },
+  "jointOwner": "Совместные",
+  "notices": {
+    "MISSING_RATE": "Нет курса {{currency}} для «{{fund}} · {{part}}»",
+    "REQUIRED_OVER_INCOME": "Обязательные платежи и покупки больше дохода на {{amount}} {{currency}}",
+    "PLAN_OVER_MONEY": "План накоплений больше доступных денег на {{amount}} {{currency}}",
+    "PLAN_OVER_MONEY_REDUCE": "План накоплений больше доступных денег на {{amount}} {{currency}}: уменьшите пополнения {{parts}}",
+    "PART_BELOW_MINIMUM": "На «{{fund}} · {{part}}» не хватает до минимума",
+    "MONTH_PLAN_OVER_INCOME": "План месяца больше дохода на {{amount}} {{currency}}",
+    "ACCOUNT_OVER_RESERVED": "На счете «{{account}}» в фондах отложено больше, чем есть: не хватает {{amount}} {{currency}}"
+  }
+}
