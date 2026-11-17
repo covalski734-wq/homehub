@@ -1,28 +1,28 @@
 ﻿# HomeHub
 
-Домашняя CRM для пары или семьи: общий бюджет, накопления, покупки и дела по дому. Разверните собственный экземпляр и ведите его вместе — с компьютера, телефона или через AI-помощника с MCP.
+A household CRM for couples and families: shared finances, savings, shopping, and chores. Host your own instance and manage your home together from a computer, phone, or an AI assistant with MCP support.
 
-**Один экземпляр — одно домохозяйство.** Все созданные владельцем учетные записи входят в общий дом и видят его данные. Это приложение для самостоятельного размещения, а не публичный сервис с регистрацией.
+**One instance, one household.** All accounts provisioned by the administrator join the same household and share its data. HomeHub is a self-hosted application without public registration.
 
-## Что внутри
+## Features
 
-- **Дашборд и план месяца:** доходы, регулярные расходы, разовые покупки, план и факт.
-- **Счета и операции:** остатки, переводы, категории и бюджетные лимиты.
-- **Выбор сумм:** отмечайте строки в таблицах для подсчета выбранного, в том числе уже купленные позиции.
-- **Накопления:** фонды, счета внутри фонда, планы пополнений и история операций. Планируемые суммы не становятся остатком до подтверждения. Удаление счета из фонда сохраняется в истории.
-- **Семейный бюджет:** участники, владельцы счетов, распределение расходов и сценарии.
-- **Покупки и домашние дела:** общий список, повторяющиеся дела и история выполнения.
-- **MCP:** доступ AI-помощников к тем же данным с отдельными правами чтения и изменения.
-- Светлая и темная темы, русский и украинский интерфейсы, адаптация к телефону.
+- **Dashboard and monthly planning:** income, recurring expenses, one-off purchases, and planned versus actual amounts.
+- **Accounts and transactions:** balances, transfers, categories, and budget limits.
+- **Selected totals:** select table rows to add up their amounts, including completed purchases.
+- **Savings:** funds, accounts within funds, planned deposits, and transaction history. Planned amounts count toward the balance only after confirmation. Removing an account from a fund remains visible in its history.
+- **Shared budgeting:** household members, account owners, expense allocation, and scenarios.
+- **Shopping and chores:** shared lists, recurring tasks, and completion history.
+- **MCP:** AI assistants can access the same data with separate read and write permissions.
+- Light and dark themes, Russian and Ukrainian interfaces, and a mobile-friendly layout.
 
-Проект начинается с пустой базы. При первом входе создаются домохозяйство, участник и стандартные категории. Финансовые записи, персональные настройки прежнего экземпляра и история его Git-коммитов не включены. Рабочая CRM, рекламные кабинеты и интеграции Google/Meta отсутствуют.
+The project starts with an empty database. The first login creates a household, a member, and standard categories. No financial records, personal settings, or Git history from the original instance are included. Agency CRM modules, advertising accounts, and Google/Meta integrations are excluded.
 
-## Быстрый старт
+## Quick start
 
-Нужны **Node.js 24 LTS** и **pnpm 11.3.0**. На Windows, если PowerShell блокирует скрипты, используйте `pnpm.cmd` вместо `pnpm`.
+You need **Node.js 24 LTS** and **pnpm 11.3.0**. On Windows, use `pnpm.cmd` instead of `pnpm` if PowerShell blocks script execution.
 
 ```sh
-git clone <URL-вашего-репозитория> homehub
+git clone <your-repository-url> homehub
 cd homehub
 npm install -g pnpm@11.3.0
 pnpm install --frozen-lockfile
@@ -32,49 +32,49 @@ pnpm db:migrate:local
 pnpm dev
 ```
 
-Откройте **http://localhost:5173**. API работает на порту 8787; Vite проксирует запросы, поэтому входите именно через порт 5173.
+Open **http://localhost:5173**. The API runs on port 8787 and Vite proxies requests to it, so use port 5173 to sign in.
 
-`auth:setup` последовательно спрашивает email и отображаемое имя каждого участника. Пустой email завершает ввод. Для каждого аккаунта генерируется случайный пароль: сохраните его в менеджере паролей, он показывается один раз. Первый вошедший участник становится владельцем — сначала войдите своей учетной записью.
+`auth:setup` asks for each member's email and display name. Submit an empty email to finish. It generates a random password for each account and displays it once; save it in a password manager. The first member to sign in becomes the household owner, so sign in with your own account first.
 
-Скрипт создает два игнорируемых Git файла:
+The script creates two files excluded from Git:
 
-| Файл                      | Назначение                                     |
-| ------------------------- | ---------------------------------------------- |
-| `apps/api/.dev.vars`      | Локальные настройки и хеши паролей             |
-| `secrets/auth-users.json` | Список аккаунтов для загрузки в секреты Worker |
+| File                      | Purpose                                   |
+| ------------------------- | ----------------------------------------- |
+| `apps/api/.dev.vars`      | Local configuration and password hashes   |
+| `secrets/auth-users.json` | Account list to upload as a Worker secret |
 
-Повторный запуск не перезаписывает существующую конфигурацию. Демо-аккаунтов, открытой регистрации и паролей по умолчанию нет. Email служит логином; приложение не отправляет писем и не проверяет владение почтовым ящиком.
+Running the script again does not overwrite existing configuration. There are no demo accounts, public registration, or default passwords. Email is used as a login identifier; the application does not send email or verify mailbox ownership.
 
-Локальная SQLite-база хранится в `apps/api/.wrangler/`. Она не связана с облачной базой.
+The local SQLite database lives in `apps/api/.wrangler/`. It is separate from your cloud database.
 
-## Размещение в Cloudflare
+## Deploying to Cloudflare
 
-Приложение использует **Workers + Static Assets + D1**. Потребуется собственный аккаунт Cloudflare. Проверяйте актуальные лимиты и стоимость выбранного тарифа; вход с проверкой пароля требует вычислительных ресурсов.
+HomeHub uses **Workers + Static Assets + D1**. You need your own Cloudflare account. Check the current limits and pricing of your plan; password verification consumes CPU resources.
 
-1. Авторизуйте CLI и создайте новую базу:
+1. Authenticate the CLI and create a new database:
 
    ```sh
    pnpm --filter @homehub/api exec wrangler login
    pnpm --filter @homehub/api exec wrangler d1 create homehub
    ```
 
-2. В `apps/api/wrangler.jsonc` замените `database_id` из нулей на ID новой базы. При необходимости измените `name`, `database_name`, `WORKSPACE_NAME`. Задайте `WEB_ORIGIN` как точный HTTPS-адрес вашего приложения, без пути. Для собственного домена настройте его в Cloudflare. Адрес не должен указывать на чужой экземпляр.
+2. In `apps/api/wrangler.jsonc`, replace the all-zero `database_id` with the new database ID. Adjust `name`, `database_name`, and `WORKSPACE_NAME` as needed. Set `WEB_ORIGIN` to your application's exact HTTPS origin, without a path. Configure a custom domain in Cloudflare if you use one. The address must point to your own instance.
 
-3. Загрузите аккаунты как секрет. Команда ниже работает в POSIX shell:
+3. Upload the accounts as a secret. In a POSIX shell:
 
    ```sh
    pnpm --filter @homehub/api exec wrangler secret put AUTH_USERS < secrets/auth-users.json
    ```
 
-   Для первой команды в PowerShell:
+   In PowerShell:
 
    ```powershell
    Get-Content -Raw -Encoding UTF8 secrets/auth-users.json | pnpm.cmd --filter @homehub/api exec wrangler secret put AUTH_USERS
    ```
 
-   Не добавляйте секреты в `wrangler.jsonc`, README, issues или CI-логи.
+   Keep secrets out of `wrangler.jsonc`, README files, issues, and CI logs.
 
-4. Выполните проверки, примените начальную миграцию к **своей новой базе** и разверните:
+4. Run the checks, apply the initial migration to **your new database**, and deploy:
 
    ```sh
    pnpm release:check
@@ -82,84 +82,84 @@ pnpm dev
    pnpm release:deploy
    ```
 
-5. Откройте приложение и войдите учетной записью владельца. `/api/health` возвращает состояние подключения к базе.
+5. Open the application and sign in with the owner's account. `/api/health` reports database connectivity.
 
-В репозитории одна начальная миграция `0000_init.sql`: структура и ограничения целостности, без пользовательских данных. Она предназначена для новой базы, не для установки поверх другого проекта.
+The repository contains one initial migration, `0000_init.sql`, with the schema and integrity constraints but no user data. It is intended for a new database, not for installation over another project.
 
-### Настройки окружения
+### Environment variables
 
-| Переменная          | Назначение                                             |
-| ------------------- | ------------------------------------------------------ |
-| `ENVIRONMENT`       | `development` локально, `production` на сервере        |
-| `WEB_ORIGIN`        | Точный адрес интерфейса; в production обязателен HTTPS |
-| `AUTH_USERS`        | Секрет: JSON-массив `{email, name, passwordHash}`      |
-| `SESSION_TTL_DAYS`  | Срок сессии, по умолчанию 30 дней                      |
-| `WORKSPACE_NAME`    | Название общего дома                                   |
-| `COINGECKO_API_KEY` | Необязательный ключ для загрузки котировок             |
+| Variable            | Purpose                                                       |
+| ------------------- | ------------------------------------------------------------- |
+| `ENVIRONMENT`       | `development` locally, `production` on the server             |
+| `WEB_ORIGIN`        | Exact frontend origin; HTTPS is required in production        |
+| `AUTH_USERS`        | Secret: a JSON array of `{email, name, passwordHash}` objects |
+| `SESSION_TTL_DAYS`  | Session lifetime; defaults to 30 days                         |
+| `WORKSPACE_NAME`    | Name of the shared household                                  |
+| `COINGECKO_API_KEY` | Optional key for fetching asset prices                        |
 
-Курсы валют загружаются из NBP, котировки активов — из CoinGecko. Эти запросы нужны соответствующим финансовым функциям; они не подключают рекламные кабинеты. При недоступности источника приложение использует сохраненные данные, если они есть. Планировщик Worker также очищает истекшие сессии и обрабатывает настроенные правила фондов.
+Exchange rates come from NBP and asset prices from CoinGecko. These requests support financial features and do not connect advertising accounts. If a provider is unavailable, the application uses previously stored data when available. The Worker's scheduler also removes expired sessions and processes configured fund rules.
 
-## MCP и AI-помощники
+## MCP and AI assistants
 
-Откройте **Настройки → Доступ для ИИ**. Создайте персональный токен с необходимыми правами. Секрет показывается при создании; храните его как пароль.
+Open **Settings → AI access** in the application's Russian or Ukrainian interface. Create a personal token with the permissions you need. The secret is displayed when created; store it like a password.
 
-- MCP endpoint: `https://ваш-домен/api/mcp`.
-- Транспорт: Streamable HTTP.
-- Авторизация персонального токена: `Authorization: Bearer <токен>`.
-- Области доступа: `finance`, `planner`, `savings`, `household`; отдельно `read` и `write`.
-- Для совместимых клиентов доступен OAuth с PKCE и страницей согласия. Discovery находится в `/.well-known/oauth-authorization-server` и `/.well-known/oauth-protected-resource/api/mcp`.
+- MCP endpoint: `https://homehub.example.com/api/mcp` (replace the origin with your own).
+- Transport: Streamable HTTP.
+- Personal token authentication: `Authorization: Bearer <token>`.
+- Permission areas: `finance`, `planner`, `savings`, and `household`, each with separate `read` and `write` scopes.
+- Compatible clients can use OAuth with PKCE and a consent page. Discovery endpoints are `/.well-known/oauth-authorization-server` and `/.well-known/oauth-protected-resource/api/mcp`.
 
-Начните с прав чтения. Примеры запросов помощнику: «Покажи расходы на этот месяц», «Сколько осталось до цели фонда?», «Какие дела по дому не выполнены?». Право изменения позволяет создавать и менять настоящие записи. Токен можно отозвать в настройках; изменения через MCP сохраняются в журнале доступа.
+Start with read permissions. Example requests: "Show this month's expenses," "How much is left to reach the fund's goal?", or "Which household chores are unfinished?" Write permissions allow an assistant to create and modify real records. Tokens can be revoked in settings; changes made through MCP are recorded in the access audit log.
 
-## Управление доступом и данными
+## Managing access and data
 
-Пароли хешируются с индивидуальной солью: PBKDF2-SHA256, 100 000 итераций. Используются длинные случайные пароли и ограничение попыток входа по email и IP. Сессия хранится сервером; cookie в production имеет `Secure`, `HttpOnly`, `SameSite=Lax`. Изменения через браузер защищены проверками CSRF. Секреты MCP храните отдельно от кода.
+Passwords are hashed with individual salts using PBKDF2-SHA256 and 100,000 iterations. The setup script generates long random passwords, and login attempts are limited by email and IP address. Sessions are stored on the server; production cookies use `Secure`, `HttpOnly`, and `SameSite=Lax`. Browser mutations are protected by CSRF checks. Store MCP secrets separately from source code.
 
-Для смены паролей сохраните резервную копию конфигурации в защищенном месте, уберите локальные файлы конфигурации и повторите `pnpm auth:setup`, затем обновите секрет `AUTH_USERS`. Смена пароля сама по себе **не отзывает уже выданные сессии и MCP-токены**. Для принудительного выхода всех участников и отзыва токенов выполните на нужной базе:
+To change passwords, securely back up your configuration, remove the local configuration files, run `pnpm auth:setup` again, and update the `AUTH_USERS` secret. Changing a password **does not revoke existing sessions or MCP tokens**. To sign out all members and revoke tokens, run this command against the intended database:
 
 ```sh
 pnpm --filter @homehub/api exec wrangler d1 execute DB --remote --command="DELETE FROM sessions; DELETE FROM api_tokens; DELETE FROM oauth_codes; DELETE FROM oauth_requests;"
 ```
 
-Для отключения участника удалите его email из `AUTH_USERS`, обновите секрет и отзовите его доступы. Не удаляйте финансовую историю ради отключения входа. Каждый участник управляет своими MCP-токенами. Учетными записями управляет администратор размещения через `AUTH_USERS`.
+To disable a member, remove their email from `AUTH_USERS`, update the secret, and revoke their access. Keep their financial history intact. Each member manages their own MCP tokens; the deployment administrator manages login accounts through `AUTH_USERS`.
 
-Перед обновлениями делайте резервную копию D1. Например, экспортируйте базу в игнорируемую директорию `secrets/` и храните копию в защищенном хранилище:
+Back up D1 before updating. For example, export the database into the ignored `secrets/` directory and store the backup securely:
 
 ```sh
 pnpm --filter @homehub/api exec wrangler d1 export DB --remote --output=../../secrets/backup.sql
 ```
 
-Бэкап содержит ваши данные. Не загружайте его в Git или публичные обращения. Потеря локальных файлов `.wrangler` удаляет локальную базу; это не способ сбросить облачную базу.
+Backups contain your data. Do not upload them to Git or public issues. Losing the local `.wrangler` files removes your local database; it does not reset the cloud database.
 
-## Разработка
+## Development
 
-| Команда                             | Что делает                                                |
-| ----------------------------------- | --------------------------------------------------------- |
-| `pnpm dev`                          | Общие типы, API и интерфейс в режиме разработки           |
-| `pnpm build`                        | Сборка интерфейса и проверка сборки Worker без публикации |
-| `pnpm typecheck`                    | Проверка TypeScript                                       |
-| `pnpm lint`                         | ESLint                                                    |
-| `pnpm format` / `pnpm format:check` | Форматирование / проверка                                 |
-| `pnpm test`                         | Общие схемы, интерфейс и API на локальном Workers runtime |
-| `pnpm test:e2e`                     | Проверка входа и основных страниц в браузере; см. ниже    |
-| `pnpm db:check`                     | Совместимость ORM и миграций                              |
-| `pnpm privacy:check`                | Проверка файлов Git на типовые секреты и личные адреса    |
-| `pnpm release:check`                | Проверки перед выпуском                                   |
+| Command                             | Purpose                                                                |
+| ----------------------------------- | ---------------------------------------------------------------------- |
+| `pnpm dev`                          | Run shared types, API, and frontend in development mode                |
+| `pnpm build`                        | Build the frontend and dry-run the Worker build without deploying      |
+| `pnpm typecheck`                    | Check TypeScript types                                                 |
+| `pnpm lint`                         | Run ESLint                                                             |
+| `pnpm format` / `pnpm format:check` | Format files / check formatting                                        |
+| `pnpm test`                         | Test shared schemas, frontend, and API using the local Workers runtime |
+| `pnpm test:e2e`                     | Check login and main pages in a browser; see below                     |
+| `pnpm db:check`                     | Check ORM schema and migration compatibility                           |
+| `pnpm privacy:check`                | Scan Git files for common secrets and personal addresses               |
+| `pnpm release:check`                | Run checks before a release                                            |
 
-Браузерный smoke-тест запускается против вашего локального экземпляра. Сначала запустите `pnpm dev`, установите Chromium командой `pnpm --filter @homehub/web exec playwright install chromium` и задайте `E2E_EMAIL`, `E2E_PASSWORD` в окружении процесса. Затем выполните `pnpm test:e2e`. Не запускайте его против чужого сервера; используйте отдельные тестовые учетные записи.
+The browser smoke test runs against your local instance. Start `pnpm dev`, install Chromium with `pnpm --filter @homehub/web exec playwright install chromium`, and set `E2E_EMAIL` and `E2E_PASSWORD` in the process environment. Then run `pnpm test:e2e`. Use dedicated test accounts and your own server.
 
 ```text
-apps/web/             React + Vite + Tailwind, интерфейс и тесты
-apps/api/src/         Hono, домашние сервисы, авторизация, MCP
-apps/api/migrations/  Начальная SQL-миграция
-packages/shared/      DTO, Zod-схемы, финансовые вычисления
-scripts/              Создание аккаунтов, форматирование, проверка публикации
+apps/web/             React + Vite + Tailwind frontend and tests
+apps/api/src/         Hono, household services, authentication, MCP
+apps/api/migrations/  Initial SQL migration
+packages/shared/      DTOs, Zod schemas, financial calculations
+scripts/              Account setup, formatting, publication checks
 ```
 
-CI-конфигурации для GitHub Actions и GitLab проверяют код без доступа к облачной базе и без автоматического деплоя. Для изменения схемы используйте `pnpm db:generate` и проверяйте SQL вручную: ограничения и триггеры финансового учета тоже должны сохраняться.
+CI configurations for GitHub Actions and GitLab validate the code without accessing your cloud database or deploying automatically. For schema changes, use `pnpm db:generate` and review the SQL manually: financial integrity constraints and triggers must also be preserved.
 
-## Публикация своего форка
+## Publishing your fork
 
-`.gitignore` исключает локальные базы, секреты, выгрузки, сборки и логи. Перед отправкой выполните `pnpm privacy:check` и просмотрите `git diff --cached`. Автоматическая проверка не распознает все виды персональных данных: не добавляйте реальные имена, адреса, платежи, клиентские данные или скриншоты своего дома в примеры и тесты.
+`.gitignore` excludes local databases, secrets, exports, builds, and logs. Before pushing, run `pnpm privacy:check` and review `git diff --cached`. The automated scanner cannot detect every kind of personal data. Keep real names, addresses, payments, client information, and screenshots of your household out of examples and tests.
 
-Проект распространяется по [MIT License](LICENSE). Можно клонировать, менять и размещать свой экземпляр. Предложения и исправления приветствуются; для воспроизведения ошибок используйте вымышленные данные.
+HomeHub is distributed under the [MIT License](LICENSE). You can clone, modify, and host your own instance. Suggestions and fixes are welcome; use fictional data when reporting bugs.
